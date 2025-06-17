@@ -1,0 +1,33 @@
+2025-06-17T18:53:31.983+05:30  INFO 82841 --- [demo] [main] com.example.demo.DemoApplication         : Starting DemoApplication using Java 17.0.13 with PID 82841 (/Users/gpandey2/Downloads/demo/target/classes started by gpandey2 in /Users/gpandey2/Downloads/demo)
+2025-06-17T18:53:31.986+05:30  INFO 82841 --- [demo] [main] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-06-17T18:53:32.770+05:30  INFO 82841 --- [demo] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2025-06-17T18:53:32.779+05:30  INFO 82841 --- [demo] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-06-17T18:53:32.779+05:30  INFO 82841 --- [demo] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-17T18:53:32.807+05:30  INFO 82841 --- [demo] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-06-17T18:53:32.807+05:30  INFO 82841 --- [demo] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 785 ms
+2025-06-17T18:53:33.114+05:30  INFO 82841 --- [demo] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2025-06-17T18:53:33.123+05:30  INFO 82841 --- [demo] [main] com.example.demo.DemoApplication         : Started DemoApplication in 1.712 seconds (process running for 2.358)
+2025-06-17T18:53:58.178+05:30  INFO 82841 --- [demo] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-17T18:53:58.185+05:30  INFO 82841 --- [demo] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-06-17T18:54:01.200+05:30  INFO 83408 --- [demo] [main] com.example.demo.DemoApplication         : Starting DemoApplication using Java 17.0.13 with PID 83408 (/Users/gpandey2/Downloads/demo/target/classes started by gpandey2 in /Users/gpandey2/Downloads/demo)
+2025-06-17T18:54:01.203+05:30  INFO 83408 --- [demo] [main] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-06-17T18:54:02.048+05:30  INFO 83408 --- [demo] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2025-06-17T18:54:02.057+05:30  INFO 83408 --- [demo] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-06-17T18:54:02.058+05:30  INFO 83408 --- [demo] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-17T18:54:02.081+05:30  INFO 83408 --- [demo] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-06-17T18:54:02.081+05:30  INFO 83408 --- [demo] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 847 ms
+2025-06-17T18:54:02.389+05:30  INFO 83408 --- [demo] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2025-06-17T18:54:02.404+05:30  INFO 83408 --- [demo] [main] com.example.demo.DemoApplication         : Started DemoApplication in 1.774 seconds (process running for 3.025)
+2025-06-17T18:56:15.380+05:30  INFO 83408 --- [demo] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-17T18:56:17.399+05:30  INFO 83408 --- [demo] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-06-17T18:56:23.419+05:30  INFO 86035 --- [demo] [main] com.example.demo.DemoApplication         : Starting DemoApplication using Java 17.0.13 with PID 86035 (/Users/gpandey2/Downloads/demo/target/classes started by gpandey2 in /Users/gpandey2/Downloads/demo)
+2025-06-17T18:56:23.424+05:30  INFO 86035 --- [demo] [main] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-06-17T18:56:24.202+05:30  INFO 86035 --- [demo] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2025-06-17T18:56:24.210+05:30  INFO 86035 --- [demo] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-06-17T18:56:24.210+05:30  INFO 86035 --- [demo] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-17T18:56:24.234+05:30  INFO 86035 --- [demo] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-06-17T18:56:24.235+05:30  INFO 86035 --- [demo] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 773 ms
+2025-06-17T18:56:24.562+05:30  INFO 86035 --- [demo] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2025-06-17T18:56:24.576+05:30  INFO 86035 --- [demo] [main] com.example.demo.DemoApplication         : Started DemoApplication in 1.749 seconds (process running for 2.45)
+2025-06-17T18:56:54.565+05:30  INFO 86035 --- [demo] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-17T18:56:54.570+05:30  INFO 86035 --- [demo] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
