@@ -12,7 +12,6 @@ import java.util.Random;
 @SpringBootApplication
 @EnableScheduling
 public class DemoApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
@@ -37,12 +36,17 @@ public class DemoApplication {
 				String[] exceptions = {
 					"NullPointerException",
 					"IllegalArgumentException",
-					"RuntimeException",
 					"ArrayIndexOutOfBoundsException"
 				};
 				String exceptionType = exceptions[random.nextInt(exceptions.length)];
 				try {
-					throw new RuntimeException("Random " + exceptionType + " occurred!");
+					if (exceptionType.equals("NullPointerException")) {
+						throw new NullPointerException("Random NullPointerException occurred!");
+					} else if (exceptionType.equals("IllegalArgumentException")) {
+						throw new IllegalArgumentException("Random IllegalArgumentException occurred!");
+					} else if (exceptionType.equals("ArrayIndexOutOfBoundsException")) {
+						throw new ArrayIndexOutOfBoundsException("Random ArrayIndexOutOfBoundsException occurred!");
+					}
 				} catch (Exception e) {
 					logger.error("Exception occurred", e);
 				}
