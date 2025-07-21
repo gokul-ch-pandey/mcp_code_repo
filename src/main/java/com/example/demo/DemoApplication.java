@@ -1,52 +1,30 @@
-package com.example.demo;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
-import java.util.Random;
-
-@SpringBootApplication
-@EnableScheduling
-public class DemoApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
-	}
-
-	@Component
-	public class LogGenerator {
-		private final Logger logger = LoggerFactory.getLogger(LogGenerator.class);
-		private final Random random = new Random();
-		private final String[] messages = {
-			"Processing user request",
-			"Checking database connection",
-			"Validating input data",
-			"Performing background task",
-			"Cleaning up resources"
-		};
-
-		@Scheduled(fixedRate = 2000)
-		public void generateLogsAndExceptions() {
-			logger.info(messages[random.nextInt(messages.length)]);
-
-			if (random.nextInt(100) < 30) {
-				String[] exceptions = {
-					"NullPointerException",
-					"IllegalArgumentException",
-					"RuntimeException",
-					"ArrayIndexOutOfBoundsException"
-				};
-				String exceptionType = exceptions[random.nextInt(exceptions.length)];
-				try {
-					throw new RuntimeException("Random " + exceptionType + " occurred!");
-				} catch (Exception e) {
-					logger.error("Exception occurred", e);
-				}
-			}
-		}
-	}
-}
+cGFja2FnZSBjb20uZXhhbXBsZS5kZW1vOwoKaW1wb3J0IG9yZy5zbGY0ai5M
+b2dnZXI7CmltcG9ydCBvcmcuc2xmNGouTG9nZ2VyRmFjdG9yeTsKaW1wb3J0
+IG9yZy5zcHJpbmdmcmFtZXdvcmsuYm9vdC5TcHJpbmdBcHBsaWNhdGlvbjsK
+aW1wb3J0IG9yZy5zcHJpbmdmcmFtZXdvcmsuYm9vdC5hdXRvY29uZmlndXJl
+LlNwcmluZ0Jvb3RBcHBsaWNhdGlvbjsKaW1wb3J0IG9yZy5zcHJpbmdmcmFt
+ZXdvcmsuc2NoZWR1bGluZy5hbm5vdGF0aW9uLkVuYWJsZVNjaGVkdWxpbmc7
+CmltcG9ydCBvcmcuc3ByaW5nZnJhbWV3b3JrLnNjaGVkdWxpbmcuYW5ub3Rh
+dGlvbi5TY2hlZHVsZWQ7CmltcG9ydCBvcmcuc3ByaW5nZnJhbWV3b3JrLnN0
+ZXJlb3R5cGUuQ29tcG9uZW50OwppbXBvcnQgamF2YS51dGlsLlJhbmRvbTsK
+CkBTcHJpbmdCb290QXBwbGljYXRpb24KQEVuYWJsZVNjaGVkdWxpbmcKcHVi
+bGljIGNsYXNzIERlbW9BcHBsaWNhdGlvbiB7CgoJcHVibGljIHN0YXRpYyB2
+b2lkIG1haW4oU3RyaW5nW10gYXJncykgewoJCVNwcmluZ0FwcGxpY2F0aW9u
+LnJ1bihEZW1vQXBwbGljYXRpb24uY2xhc3MsIGFyZ3MpOwoJfQoKCUBDb21w
+b25lbnQKCXB1YmxpYyBjbGFzcyBMb2dHZW5lcmF0b3IgewoJCXByaXZhdGUg\nZmluYWwgTG9nZ2VyIGxvZ2dlciA9IExvZ2dlckZhY3RvcnkuZ2V0TG9nZ2Vy
+KExvZ0dlbmVyYXRvci5jbGFzcyk7CgkJcHJpdmF0ZSBmaW5hbCBSYW5kb20g\ncmFuZG9tID0gbmV3IFJhbmRvbSgpOwoJCXByaXZhdGUgZmluYWwgU3RyaW5n
+W10gbWVzc2FnZXMgPSB7CgkJCSJQcm9jZXNzaW5nIHVzZXIgcmVxdWVzdCIs
+CgkJCSJDaGVja2luZyBkYXRhYmFzZSBjb25uZWN0aW9uIiwKCQkJIlZhbGlk
+YXRpbmcgaW5wdXQgZGF0YSIsCgkJCSJQZXJmb3JtaW5nIGJhY2tncm91bmQg
+dGFzayIsCgkJCSJDbGVhbmluZyB1cCByZXNvdXJjZXMiCgkJfTsKCgkJQFNj
+aGVkdWxlZChmaXhlZFJhdGUgPSAyMDAwKQoJCXB1YmxpYyB2b2lkIGdlbmVy\nYXRlTG9nc0FuZEV4Y2VwdGlvbnMoKSB7CgkJCWxvZ2dlci5pbmZvKG1lc3Nh\nZ2VzW3JhbmRvbS5uZXh0SW50KG1lc3NhZ2VzLmxlbmd0aCldKTsKCgovLykJ\nCWlmIChyYW5kb20ubmV4dEludCgxMDApIDwgMzApIHsKCgovLykJCVN0cmlu
+Z1tdIGV4Y2VwdGlvbnMgPSB7CgovLykJCQkJIk51bGxQb2ludGVyRXhjZXB0
+aW9uIiwKCgovLykJCQkJIklsbGVnYWxBZ3VtZW50RXhjZXB0aW9uIiwKCgov
+LykJCQkJIlJ1bnRpbWVFeGNlcHRpb24iLAoKLy8pJQkJCSJBcnJheUluZGV4
+T3V0T2ZCb3VuZHNFeGNlcHRpb24iCgovLykJCQl9OwoKLy8gCQkJCVN0cmlu
+ZyBleGNlcHRpb25UeXBlID0gZXhjZXB0aW9uc1tyYW5kb20ubmV4dEludChl
+eGNlcHRpb25zLmxlbmd0aCldOwoKLy8gCQkJCXRyeSB7CgovLy8gCQkJCSAg
+dGhyb3cgbmV3IFJ1bnRpbWVFeGNlcHRpb24oIlJhbmRvbSAiICsgZXhjZXB0
+aW9uVHlwZSArICIgb2NjdXJyZWQhIik7CgovLy8gCQkJCX0gY2F0Y2ggKEV4
+Y2VwdGlvbiBlKSB7CgovLy8gCQkJCQlsb2dnZXIuZXJyb3IoIkV4Y2VwdGlv
+biBvY2N1cnJlZCIsIGUpOwoKLy8gCQkJCX0KCgovLykJCX0KCQl9Cgl9Cn0=
