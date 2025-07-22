@@ -22,31 +22,24 @@ public class DemoApplication {
 		private final Logger logger = LoggerFactory.getLogger(LogGenerator.class);
 		private final Random random = new Random();
 		private final String[] messages = {
-			"Processing user request",
-			"Checking database connection",
-			"Validating input data",
-			"Performing background task",
-			"Cleaning up resources"
+				"Processing user request",
+				"Checking database connection",
+				"Validating input data",
+				"Performing background task",
+				"Cleaning up resources"
 		};
 
 		@Scheduled(fixedRate = 2000)
-		public void generateLogsAndExceptions() {
+		public void generateInfoLogs() { // Renamed method
 			logger.info(messages[random.nextInt(messages.length)]);
-
-			if (random.nextInt(100) < 30) {
-				String[] exceptions = {
-					"NullPointerException",
-					"IllegalArgumentException",
-					"RuntimeException",
-					"ArrayIndexOutOfBoundsException"
-				};
-				String exceptionType = exceptions[random.nextInt(exceptions.length)];
-				try {
-					throw new RuntimeException("Random " + exceptionType + " occurred!");
-				} catch (Exception e) {
-					logger.error("Exception occurred", e);
-				}
-			}
 		}
 	}
 }
+
+// TODO: Unit Test Updates
+// This change significantly alters the behavior of the LogGenerator.
+// Any existing unit tests for LogGenerator, especially those that might have
+// asserted the presence of intentional exceptions or error log messages,
+// must be updated or removed accordingly.
+// New tests should be added if necessary to reflect the new intended behavior
+// (i.e., only logging informational messages).
