@@ -14,7 +14,7 @@ public class OrderServiceImplTest {
 
     @BeforeEach
     public void setUp() {
-        orderService = new OrderServiceImpl();
+        orderService = new OrderServiceImpl(java.time.Clock.systemDefaultZone());
     }
 
     @Test

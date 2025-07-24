@@ -102,11 +102,6 @@ public class OrderServiceImpl implements OrderService {
         // Fetch the existing order. This is the entity we will modify and save.
         Order existingOrder = orderRepo.get(id);
 
-        // 1. Correctly handle non-existent order (your original fix)
-        if (existingOrder == null) {
-            throw new IllegalArgumentException("Order with id " + id + " not found");
-        }
-
         // 2. Prevent updates on terminal-state orders
         if (existingOrder.getStatus() == OrderStatus.COMPLETED || existingOrder.getStatus() == OrderStatus.CANCELLED) {
             logger.error("Cannot update order {} with status {}", id, existingOrder.getStatus());
