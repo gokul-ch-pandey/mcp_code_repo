@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -60,7 +61,7 @@ public class OrderServiceImpl implements OrderService {
         // Create a new Order object to ensure immutability of the input
         Order newOrder = new Order();
         newOrder.setDescription(order.getDescription());
-        newOrder.setEntries(order.getEntries());
+        newOrder.setEntries(new ArrayList<>(order.getEntries()));
 
         double total = newOrder.getEntries().stream()
                 .mapToDouble(e -> e.getPrice() * e.getQuantity())
@@ -78,21 +79,23 @@ public class OrderServiceImpl implements OrderService {
 
         orderRepo.put(newOrder.getId(), newOrder);
         logger.info("Order created: {}", newOrder);
-        return newOrder;
+        return new Order(newOrder);
     }
     
-    // ... getOrder and getAllOrders are mostly fine, but getAllOrders should still return a copy ...
     @Override
     public List<Order> getAllOrders() {
         logger.info("Fetching all orders");
-        // Creating a new ArrayList is correct to prevent modification of the underlying values collection
-        return new ArrayList<>(orderRepo.values());
+        // Return a list of copies
+        return orderRepo.values().stream()
+                   .map(Order::new)
+                   .collect(Collectors.toList());
     }
 
     @Override
     public Order getOrder(Long id) {
         logger.info("Fetching order with id: {}", id);
-        return orderRepo.get(id);
+        Order order = orderRepo.get(id);
+        return (order != null) ? new Order(order) : null; // Return a copy
     }
     
     @Override
@@ -121,7 +124,7 @@ public class OrderServiceImpl implements OrderService {
 
         // Update entries and recalculate amount if provided
         if (orderUpdateRequest.getEntries() != null && !orderUpdateRequest.getEntries().isEmpty()) {
-            existingOrder.setEntries(orderUpdateRequest.getEntries());
+            existingOrder.setEntries(new ArrayList<>(orderUpdateRequest.getEntries()));
             double total = orderUpdateRequest.getEntries().stream()
                     .mapToDouble(e -> e.getPrice() * e.getQuantity())
                     .sum();
@@ -137,7 +140,7 @@ public class OrderServiceImpl implements OrderService {
         // Persist the updated *existing* order
         orderRepo.put(id, existingOrder);
         logger.info("Order updated: {}", existingOrder);
-        return existingOrder;
+        return new Order(existingOrder);
     }
 
     private void validateStatusTransition(OrderStatus from, OrderStatus to) {
