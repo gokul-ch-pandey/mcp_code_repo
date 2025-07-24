@@ -1,7 +1,9 @@
 package com.example.demo.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Order {
     private Long id;
@@ -20,6 +22,23 @@ public class Order {
         this.orderDate = orderDate;
         this.status = status;
         this.entries = entries;
+    }
+
+    // Copy constructor
+    public Order(Order other) {
+        this.id = other.id;
+        this.description = other.description;
+        this.amount = other.amount;
+        this.orderDate = other.orderDate;
+        this.status = other.status;
+        // Deep copy of entries
+        if (other.entries != null) {
+            this.entries = other.entries.stream()
+                               .map(OrderEntry::new)
+                               .collect(Collectors.toList());
+        } else {
+            this.entries = new ArrayList<>();
+        }
     }
 
     public Long getId() { return id; }
