@@ -1,4 +1,5 @@
-package com.example.demo.service.impl;
+
+ package com.example.demo.service.impl;
 
 import com.example.demo.model.Order;
 import com.example.demo.model.OrderEntry;
@@ -44,8 +45,8 @@ public class OrderServiceImpl implements OrderService {
         }
         // Calculate total amount
         double total = order.getEntries().stream()
-                .mapToDouble(e -> e.getPrice() * e.getQuantity())
-                .sum();
+            .mapToDouble(e -> e.getPrice() * e.getQuantity())
+            .sum();
         order.setAmount(total);
         // Set order date if not set
         if (order.getOrderDate() == null) {
@@ -75,7 +76,10 @@ public class OrderServiceImpl implements OrderService {
     public Order updateOrder(Long id, Order order) {
         logger.info("Updating order with id: {}", id);
         Order existing = orderRepo.get(id);
-        
+        if (existing == null) {
+            logger.error("Order with id {} not found", id);
+            return null;
+        }
         // Only allow update if not COMPLETED or CANCELLED
         if (existing.getStatus() == OrderStatus.COMPLETED || existing.getStatus() == OrderStatus.CANCELLED) {
             logger.error("Cannot update order with status {}", existing.getStatus());
@@ -84,8 +88,8 @@ public class OrderServiceImpl implements OrderService {
         // Business logic: recalculate total, update status
         if (order.getEntries() != null && !order.getEntries().isEmpty()) {
             double total = order.getEntries().stream()
-                    .mapToDouble(e -> e.getPrice() * e.getQuantity())
-                    .sum();
+                .mapToDouble(e -> e.getPrice() * e.getQuantity())
+                .sum();
             order.setAmount(total);
         } else {
             order.setAmount(existing.getAmount());
@@ -97,7 +101,7 @@ public class OrderServiceImpl implements OrderService {
         if (order.getStatus() == null) {
             order.setStatus(existing.getStatus());
         } else if (existing.getStatus() == OrderStatus.PROCESSING &&
-                (order.getStatus() == OrderStatus.COMPLETED || order.getStatus() == OrderStatus.CANCELLED)) {
+            (order.getStatus() == OrderStatus.COMPLETED || order.getStatus() == OrderStatus.CANCELLED)) {
             // allow
         } else if (!order.getStatus().equals(existing.getStatus())) {
             logger.error("Invalid status transition from {} to {}", existing.getStatus(), order.getStatus());
@@ -121,3 +125,4 @@ public class OrderServiceImpl implements OrderService {
         orderRepo.remove(id);
     }
 }
+ 
