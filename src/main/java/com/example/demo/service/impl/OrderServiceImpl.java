@@ -75,6 +75,10 @@ public class OrderServiceImpl implements OrderService {
     public Order updateOrder(Long id, Order order) {
         logger.info("Updating order with id: {}", id);
         Order existing = orderRepo.get(id);
+
+        if (existing == null) {
+            throw new IllegalArgumentException("Order with id " + id + " not found");
+        }
         
         // Only allow update if not COMPLETED or CANCELLED
         if (existing.getStatus() == OrderStatus.COMPLETED || existing.getStatus() == OrderStatus.CANCELLED) {
@@ -97,7 +101,7 @@ public class OrderServiceImpl implements OrderService {
         if (order.getStatus() == null) {
             order.setStatus(existing.getStatus());
         } else if (existing.getStatus() == OrderStatus.PROCESSING &&
-                (order.getStatus() == OrderStatus.COMPLETED || order.getStatus() == OrderStatus.CANCELLED)) {
+                   (order.getStatus() == OrderStatus.COMPLETED || order.getStatus() == OrderStatus.CANCELLED)) {
             // allow
         } else if (!order.getStatus().equals(existing.getStatus())) {
             logger.error("Invalid status transition from {} to {}", existing.getStatus(), order.getStatus());
